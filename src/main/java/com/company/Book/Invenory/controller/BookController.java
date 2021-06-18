@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+
 @Controller
 
 @RequestMapping("/books")

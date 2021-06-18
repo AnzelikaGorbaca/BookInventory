@@ -23,7 +23,6 @@ import javax.sql.DataSource;
 public class SpringConfig implements WebMvcConfigurer {
 
 
-
     private final ApplicationContext applicationContext;
 
     @Autowired
@@ -54,22 +53,6 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-//
-//   @Bean
-//    public DataSource dataSource() {
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/springproject");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("Paroljanjet7");
-//
-//        return dataSource;
-//    }
-//
-//    @Bean
-//    public JdbcTemplate jdbcTemplate() {
-//        return new JdbcTemplate(dataSource());
-//    }
+
 
 }

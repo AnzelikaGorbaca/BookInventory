@@ -13,12 +13,9 @@ import java.util.List;
 @Component
 public class BookDAO {
 
-    //    private final JdbcTemplate jdbcTemplate;
-//
-//    @Autowired
-//    public BookDAO(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
+    //GET CONNECTION WITH DATABASE HIBERNATE
+
+
     private List<Book> books = new ArrayList<>();
     {
         books.add(new Book(1, "Dance", "Robbie Williams", 2005, 250, "english", "no description"));

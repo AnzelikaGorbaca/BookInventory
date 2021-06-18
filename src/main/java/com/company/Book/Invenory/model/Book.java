@@ -4,18 +4,18 @@ import lombok.Data;
 import lombok.Generated;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-@Generated //doesn't work
-@Data//doesn't work
+@Table (name = "book")
+//@Generated //doesn't work
+//@Data//doesn't work
 public class Book {
 
     @Id
-    @Column(updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
     private int id;
     @NotEmpty(message = "Name should not to be empty")
     @Size(min = 1, max = 40, message = "Name should be between 1 and 40 characters")

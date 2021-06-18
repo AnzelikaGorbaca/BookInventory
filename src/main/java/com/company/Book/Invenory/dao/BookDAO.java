@@ -1,22 +1,35 @@
 package com.company.Book.Invenory.dao;
 
 import com.company.Book.Invenory.model.Book;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 @Component
 public class BookDAO {
 
-    //GET CONNECTION WITH DATABASE HIBERNATE
+    @Bean
+    public SessionFactory SessionFactory() {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .addAnnotatedClass(Book.class)
+                .buildSessionFactory();
+        return sessionFactory;
 
+    }
 
     private List<Book> books = new ArrayList<>();
+
     {
         books.add(new Book(1, "Dance", "Robbie Williams", 2005, 250, "english", "no description"));
         books.add(new Book(2, "Fancy", "Mark Twen", 1988, 455, "english", "no description"));
@@ -32,7 +45,8 @@ public class BookDAO {
     }
 
     public void save(Book book) {
-        books.add (book);
+        books.add(book);
+
     }
 
     public void update(int id, Book updatedBook) {

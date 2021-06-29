@@ -6,25 +6,40 @@ import com.company.Book.Invenory.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceUnit;
+
 
 public class SaveService {
 
 
-    private static BookDAO bookDAO = new BookDAO();
 
-    private static final SessionFactory sessionFactory = bookDAO.SessionFactory();
-    private static final Session session = sessionFactory.getCurrentSession();
+    private static final BookDAO bookDAO = new BookDAO();
 
 
-    public static void save(Book book) {
+    private static final EntityManager entityManager = bookDAO.getEntityManager();
+
+    public static void save(Book book){
         try {
-            session.beginTransaction();
-            session.save(book);
-            session.getTransaction().commit();
+            bookDAO.beginTransaction();
+            entityManager.persist(book);
         } finally {
-            sessionFactory.close();
+            bookDAO.commitTransaction();
         }
 
-
     }
+
+
+
+//    public static void save(Book book) {
+//        try {
+//            session.beginTransaction();
+//            session.save(book);
+//            session.getTransaction().commit();
+//        } finally {
+//            sessionFactory.close();
+//        }
+//
+//
+//    }
 }
